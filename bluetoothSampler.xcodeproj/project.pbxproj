@@ -14,6 +14,7 @@
 		56688CFF1D6B15900037D16E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56688CFD1D6B15900037D16E /* LaunchScreen.storyboard */; };
 		56688D0A1D6B15900037D16E /* bluetoothSamplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56688D091D6B15900037D16E /* bluetoothSamplerTests.swift */; };
 		56688D151D6B15900037D16E /* bluetoothSamplerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56688D141D6B15900037D16E /* bluetoothSamplerUITests.swift */; };
+		56BDE4301D7BC47500247E36 /* MCNearbyServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BDE42F1D7BC47500247E36 /* MCNearbyServiceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		56688D101D6B15900037D16E /* bluetoothSamplerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bluetoothSamplerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56688D141D6B15900037D16E /* bluetoothSamplerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bluetoothSamplerUITests.swift; sourceTree = "<group>"; };
 		56688D161D6B15900037D16E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56BDE42F1D7BC47500247E36 /* MCNearbyServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCNearbyServiceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				56688CF41D6B15900037D16E /* AppDelegate.swift */,
 				56688CF61D6B15900037D16E /* ViewController.swift */,
+				56BDE42F1D7BC47500247E36 /* MCNearbyServiceViewController.swift */,
 				56688CF81D6B15900037D16E /* Main.storyboard */,
 				56688CFB1D6B15900037D16E /* Assets.xcassets */,
 				56688CFD1D6B15900037D16E /* LaunchScreen.storyboard */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56BDE4301D7BC47500247E36 /* MCNearbyServiceViewController.swift in Sources */,
 				56688CF71D6B15900037D16E /* ViewController.swift in Sources */,
 				56688CF51D6B15900037D16E /* AppDelegate.swift in Sources */,
 			);
@@ -484,6 +488,7 @@
 				56688D1B1D6B15900037D16E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56688D1C1D6B15900037D16E /* Build configuration list for PBXNativeTarget "bluetoothSamplerTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				56688D1E1D6B15900037D16E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56688D1F1D6B15900037D16E /* Build configuration list for PBXNativeTarget "bluetoothSamplerUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				56688D211D6B15900037D16E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

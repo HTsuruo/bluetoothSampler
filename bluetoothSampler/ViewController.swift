@@ -137,6 +137,10 @@ class ViewController: UIViewController, MCSessionDelegate, MCAdvertiserAssistant
         view.endEditing(true)
     }
 
+    @IBAction func onClickChangeBtn(sender: UIButton) {
+        self.performSegueWithIdentifier("toMCVC", sender: self)
+    }
+    
 
 }
 
