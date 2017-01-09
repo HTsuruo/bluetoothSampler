@@ -35,7 +35,7 @@ class ViewController: UIViewController, MCSessionDelegate, MCAdvertiserAssistant
     
     func setupSession() {
         peerID = MCPeerID(displayName: UIDevice.current.name)
-        session = MCSession(peer: peerID)
+        session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
         session.delegate = self
         
         advertiser = MCAdvertiserAssistant(serviceType: "sampler20160822", discoveryInfo: nil, session: session)
