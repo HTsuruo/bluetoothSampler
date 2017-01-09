@@ -28,12 +28,12 @@ class MCNearbyServiceViewController: UIViewController, MCSessionDelegate, MCNear
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onClickChangeBtn(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func onClickChangeBtn(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func setupSession() {
-        peerID = MCPeerID(displayName: UIDevice.currentDevice().name)
+        peerID = MCPeerID(displayName: UIDevice.current.name)
         session = MCSession(peer: peerID)
         session.delegate = self
         
@@ -52,67 +52,67 @@ class MCNearbyServiceViewController: UIViewController, MCSessionDelegate, MCNear
 //            let data = tf.text?.dataUsingEncoding(NSUTF8StringEncoding)
 //            try session.sendData(data!, toPeers: session.connectedPeers, withMode: .Reliable)
             } catch let error as NSError {
-            let ac = UIAlertController(title: "Send error", message: error.localizedDescription, preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
+            let ac = UIAlertController(title: "Send error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(ac, animated: true, completion: nil)
             }
         }
     }
     
     
-    func session(session: MCSession, peer peerID: MCPeerID, didChangeState state: MCSessionState) {
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
-        case MCSessionState.Connected:
+        case MCSessionState.connected:
             print("Connected: \(peerID.displayName)")
             
-        case MCSessionState.Connecting:
+        case MCSessionState.connecting:
             print("Connecting: \(peerID.displayName)")
             
-        case MCSessionState.NotConnected:
+        case MCSessionState.notConnected:
             print("Not Connected: \(peerID.displayName)")
         }
     }
     
-    func session(session: MCSession, didReceiveData data: NSData, fromPeer peerID: MCPeerID) {
-        let str = String(data: data, encoding: NSUTF8StringEncoding)
+    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        let str = String(data: data, encoding: String.Encoding.utf8)
         //※point!!（非同期なのでpromiseで認知してあげる必要がある.）
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             print("data : \(str)")
         }
     }
     
-    func session(session: MCSession, didReceiveStream stream: NSInputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
     }
     
-    func session(session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, withProgress progress: NSProgress) {
+    func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
     }
     
-    func session(session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, atURL localURL: NSURL, withError error: NSError?) {
+    func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL, withError error: Error?) {
     }
     
-    func browserViewController(browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool {
+    func browserViewController(_ browserViewController: MCBrowserViewController, shouldPresentNearbyPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) -> Bool {
         return true
     }
     
 //    Peer を発見した際に呼ばれるメソッド
-    func browser(browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?){
+    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?){
         print("peer discovered")
         print("device : \(peerID.displayName)")
         //発見した Peer へ招待を送る
-        browser.invitePeer(peerID, toSession: session, withContext: nil, timeout: 0)
+        browser.invitePeer(peerID, to: session, withContext: nil, timeout: 0)
     }
     
 //    Peer を見失った際に呼ばれるメソッド
-    func browser(browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
+    func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         print("peer lost")
     }
     
-    func advertiser(advertiser: MCNearbyServiceAdvertiser,didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: NSData?, invitationHandler: (Bool, MCSession) -> Void) {
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser,didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         //招待を受けるかどうかと自身のセッションを返す
         invitationHandler(true, session)
     }
     
-    @IBAction func onClickConnectBtn(sender: UIButton) {
+    @IBAction func onClickConnectBtn(_ sender: UIButton) {
         setupSession()
     }
     
